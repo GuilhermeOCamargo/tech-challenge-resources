@@ -6,7 +6,7 @@ terraform {
       name = "tech-challenge-github-action"
     }
   }
-  
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -19,7 +19,6 @@ terraform {
 
 provider "aws" {
   region  = "us-east-1"
-  profile = "default"
 }
 
 resource "aws_ecr_repository" "tech-challenge-api" {
