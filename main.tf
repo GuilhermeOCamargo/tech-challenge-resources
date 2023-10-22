@@ -6,6 +6,7 @@ terraform {
       name = "tech-challenge-github-action"
     }
   }
+  
   required_providers {
     aws = {
       source  = "hashicorp/aws"
