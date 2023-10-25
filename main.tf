@@ -1,12 +1,11 @@
 terraform {
-   cloud {
-    organization = "guilherme-camargo"
+  #  cloud {
+  #   organization = "guilherme-camargo"
 
-    workspaces {
-      name = "tech-challenge-github-action"
-    }
-  }
-
+  #   workspaces {
+  #     name = "tech-challenge-github-action"
+  #   }
+  # }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -18,14 +17,6 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
-}
-
-resource "aws_ecr_repository" "tech-challenge-api" {
-  name                 = "tech-challenge-api"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
+  region  = var.region
+  profile = "default"
 }
