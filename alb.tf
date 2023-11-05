@@ -7,12 +7,6 @@ resource "aws_lb" "tech_challenge_alb" {
 
   enable_deletion_protection = false
 
-  #   access_logs {
-  #     bucket  = aws_s3_bucket.lb_logs.id
-  #     prefix  = "test-lb"
-  #     enabled = true
-  #   }
-
   tags = var.tag
 }
 
@@ -20,8 +14,6 @@ resource "aws_lb_listener" "tech_challenge_alb_listener" {
   load_balancer_arn = aws_lb.tech_challenge_alb.arn
   port              = 80
   protocol          = "HTTP"
-  #   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  #   certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
 
   default_action {
     type             = "forward"

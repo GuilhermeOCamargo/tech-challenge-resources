@@ -1,11 +1,11 @@
 terraform {
-  #  cloud {
-  #   organization = "guilherme-camargo"
+   cloud {
+    organization = "guilherme-camargo"
 
-  #   workspaces {
-  #     name = "tech-challenge-github-action"
-  #   }
-  # }
+    workspaces {
+      name = "tech-challenge-github-action"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -21,5 +21,5 @@ locals {
 
 provider "aws" {
   region  = var.region
-  profile = "default"
+  # profile = "default"
 }
