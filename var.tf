@@ -1,14 +1,50 @@
-variable "ami_id" {
-    default     = "ami-0df435f331839b2d6"
-    description = "AMI ID"
-}
-
 variable "region" {
   default     = "us-east-1"
   description = "AWS region"
 }
 
 variable "tag" {
-  default = "tech-challenge"
+  default = {
+    Terraform = "true"
+    Project   = "tech-challenge"
+  }
   description = "AWS tag"
+  type        = map(string)
+}
+
+variable "container_name" {
+  default     = "tech-challenge-container"
+  description = "Container Name"
+}
+
+variable "container_port" {
+  default     = 8080
+  description = "Container Port"
+}
+
+variable "health_check" {
+  default     = "/tech-challenge/health"
+  description = "Api health check"
+}
+
+variable "db_username" {
+  # sensitive   = true
+  default = "user123"
+  description = "Database username"
+}
+
+variable "db_password" {
+  # sensitive   = true
+  default = "senha123"
+  description = "Database password"
+}
+
+variable "ssm_prefix" {
+  default = "/config/tech-challenge-app_prd"
+  description = "SSM key prefix"
+}
+
+variable "api_doc_url" {
+  default = "/api-doc.html"
+  description = "Api doc url"
 }

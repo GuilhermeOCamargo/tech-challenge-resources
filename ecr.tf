@@ -5,4 +5,5 @@ resource "aws_ecr_repository" "tech-challenge-ecr" {
   image_scanning_configuration {
     scan_on_push = true
   }
+  tags = var.tag
 }
