@@ -2,7 +2,7 @@ data "aws_iam_policy_document" "tech_challenge_fargate_task_policy_doc" {
   statement {
     actions = [
       "sts:AssumeRole",
-      
+
     ]
     principals {
       type        = "Service"

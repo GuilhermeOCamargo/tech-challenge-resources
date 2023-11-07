@@ -171,7 +171,7 @@ resource "aws_vpc_endpoint" "docker-endpoint" {
   )
 }
 
-# cloudwatch
+# ssm
 resource "aws_vpc_endpoint" "ssm_endpoint" {
   vpc_id              = aws_vpc.tech_challenge_ecs_vpc.id
   service_name        = "com.amazonaws.${var.region}.ssm"

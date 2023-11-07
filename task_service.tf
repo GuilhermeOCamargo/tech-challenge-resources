@@ -3,7 +3,7 @@ resource "aws_ecs_task_definition" "tech_challenge_task_definition" {
   task_role_arn            = aws_iam_role.tech_challenge_fargate_task_role.arn
   execution_role_arn       = aws_iam_role.tech_challenge_fargate_task_role.arn
   network_mode             = "awsvpc"
-  cpu                      = "256"
+  cpu                      = "512"
   memory                   = "1024"
   requires_compatibilities = ["FARGATE"]
 
@@ -11,8 +11,8 @@ resource "aws_ecs_task_definition" "tech_challenge_task_definition" {
     {
       name                    = var.container_name
       image                   = "${aws_ecr_repository.tech-challenge-ecr.repository_url}:latest"
-      cpu                     = 10
-      memory                  = 512
+      cpu                     = 512
+      memory                  = 1024
       essential               = true
       log_group               = aws_cloudwatch_log_group.log_group_create.name
       aws_ecs_cluster_fargate = aws_ecs_cluster.tech_challenge_cluster.arn

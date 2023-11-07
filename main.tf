@@ -1,5 +1,5 @@
 terraform {
-   cloud {
+  cloud {
     organization = "guilherme-camargo"
 
     workspaces {
@@ -20,6 +20,6 @@ locals {
 }
 
 provider "aws" {
-  region  = var.region
+  region = var.region
   # profile = "default"
 }

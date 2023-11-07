@@ -69,9 +69,9 @@ resource "aws_security_group" "tech_challenge_db_security_group" {
   vpc_id      = aws_vpc.tech_challenge_ecs_vpc.id
   tags        = var.tag
   ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
+    from_port       = 3306
+    to_port         = 3306
+    protocol        = "tcp"
     security_groups = [aws_security_group.tech_challenge_security_group.id]
   }
   egress {
