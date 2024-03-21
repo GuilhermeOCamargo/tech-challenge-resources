@@ -58,3 +58,7 @@ variable "user_pool_domain" {
   default     = "user-auth-grp36"
   description = "User pool domain name"
 }
+
+variable "ses_email" {
+  description = "Email configurado no ses"
+}

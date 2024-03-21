@@ -24,7 +24,11 @@ data "aws_iam_policy_document" "tech_challenge_ecs_secret_policy_doc" {
       "logs:CreateLogStream",
       "logs:PutLogEvents",
       "ssm:GetParameters",
-      "ssm:GetParametersByPath"
+      "ssm:GetParametersByPath",
+      "sqs:SendMessage",
+      "sqs:ReceiveMessage",
+      "ses:SendEmail",
+      "ses:SendRawEmail"
     ]
     resources = ["*"
     ]

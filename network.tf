@@ -97,6 +97,22 @@ resource "aws_vpc_endpoint" "s3" {
   tags = merge(
     var.tag,
     {
+      Name = "sqs-vpc-endpoint"
+    }
+  )
+  depends_on = [aws_route_table_association.private]
+}
+
+# sqs
+resource "aws_vpc_endpoint" "sqs" {
+  vpc_id            = aws_vpc.tech_challenge_ecs_vpc.id
+  service_name      = "com.amazonaws.${var.region}.sqs"
+  route_table_ids   = [for s in data.aws_route_table.selected : s.id]
+  auto_accept       = true
+  vpc_endpoint_type = "Gateway"
+  tags = merge(
+    var.tag,
+    {
       Name = "s3-vpc-endpoint"
     }
   )

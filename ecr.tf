@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "tech-challenge-ecr" {
-  name                 = "tech-challenge-api"
+  name                 = "${locals.project_name}-ecr"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

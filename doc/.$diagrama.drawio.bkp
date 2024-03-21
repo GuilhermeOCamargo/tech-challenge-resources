@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-03-21T23:55:03.094Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Qnvntgrg9OmdALnehyu3" version="24.0.4" type="device">
+<mxfile host="Electron" modified="2024-03-21T23:53:09.062Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="ko07u2hxDKfBSgBVqbe0" version="24.0.4" type="device">
   <diagram id="gpjDMqam8Uh3lvXLKTrl" name="Página-2">
     <mxGraphModel dx="1816" dy="2068" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -162,7 +162,7 @@
           <mxGeometry x="1075" y="710" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kg7VX687xHiH5ZQZs3SH-8" value="Amazon Cognito" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cognito;" parent="1" vertex="1">
-          <mxGeometry x="648" y="671" width="80" height="110" as="geometry" />
+          <mxGeometry x="640" y="671" width="80" height="110" as="geometry" />
         </mxCell>
         <mxCell id="kg7VX687xHiH5ZQZs3SH-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="kg7VX687xHiH5ZQZs3SH-10" target="kg7VX687xHiH5ZQZs3SH-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
