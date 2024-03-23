@@ -87,6 +87,8 @@ data "aws_route_table" "selected" {
   depends_on = [aws_route_table_association.private, aws_subnet.ecs_private_subnet_1, aws_subnet.ecs_private_subnet_2]
 }
 
+#### VPC ENDPOINTS
+
 # s3
 resource "aws_vpc_endpoint" "s3" {
   vpc_id            = aws_vpc.tech_challenge_ecs_vpc.id
@@ -105,19 +107,38 @@ resource "aws_vpc_endpoint" "s3" {
 
 # sqs
 resource "aws_vpc_endpoint" "sqs" {
-  vpc_id            = aws_vpc.tech_challenge_ecs_vpc.id
-  service_name      = "com.amazonaws.${var.region}.sqs"
-  route_table_ids   = [for s in data.aws_route_table.selected : s.id]
-  auto_accept       = true
-  vpc_endpoint_type = "Gateway"
+  vpc_id              = aws_vpc.tech_challenge_ecs_vpc.id
+  service_name        = "com.amazonaws.${var.region}.sqs"
+  security_group_ids  = [aws_security_group.VPC_endpoint_sg.id]
+  subnet_ids          = toset(data.aws_subnets.private.ids)
+  private_dns_enabled = true
+  auto_accept         = true
+  vpc_endpoint_type   = "Interface"
   tags = merge(
     var.tag,
     {
-      Name = "s3-vpc-endpoint"
+      Name = "sqs-vpc-endpoint"
     }
   )
-  depends_on = [aws_route_table_association.private]
 }
+
+# SES
+resource "aws_vpc_endpoint" "ses" {
+  vpc_id              = aws_vpc.tech_challenge_ecs_vpc.id
+  service_name        = "com.amazonaws.${var.region}.email-smtp"
+  security_group_ids  = [aws_security_group.VPC_endpoint_sg.id]
+  subnet_ids          = toset(data.aws_subnets.private.ids)
+  private_dns_enabled = true
+  auto_accept         = true
+  vpc_endpoint_type   = "Interface"
+  tags = merge(
+    var.tag,
+    {
+      Name = "sqs-vpc-endpoint"
+    }
+  )
+}
+
 
 # API Gateway
 resource "aws_vpc_endpoint" "apigateway-endpoint" {

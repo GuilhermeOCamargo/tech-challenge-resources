@@ -1,6 +1,5 @@
 resource "aws_sqs_queue" "tech_challenge_queue" {
-  name                       = "${locals.project_name}-queue"
-  fifo_queue = true
+  name                       = "${local.project_name}-queue"
   delay_seconds              = 5
   visibility_timeout_seconds = 30
   max_message_size           = 2048
@@ -16,7 +15,7 @@ resource "aws_sqs_queue" "tech_challenge_queue" {
 }
 
 resource "aws_sqs_queue" "tech_challenge_dlq" {
-  name = "${locals.project_name}-dlq-queue"
+  name = "${local.project_name}-dlq-queue"
 }
 
 resource "aws_sqs_queue_redrive_allow_policy" "tech_challenge_queue_redrive_allow_policy" {

@@ -62,3 +62,7 @@ variable "user_pool_domain" {
 variable "ses_email" {
   description = "Email configurado no ses"
 }
+
+variable "ses_recipient_email" {
+  description = "Email configurado no ses"
+}

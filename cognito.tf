@@ -36,7 +36,7 @@ resource "aws_cognito_user_pool" "tech_challenge_user_pool" {
     required                 = false
   }
   schema {
-    name                     = "cpf"
+    name                     = "email"
     attribute_data_type      = "String"
     developer_only_attribute = false
     mutable                  = false
@@ -65,7 +65,7 @@ resource "aws_cognito_user_pool_client" "tech_challenge_user_pool_client" {
   generate_secret                      = true
   access_token_validity                = 1 #horas
   explicit_auth_flows                  = ["ALLOW_REFRESH_TOKEN_AUTH", "ALLOW_USER_PASSWORD_AUTH"]
-  callback_urls                        = ["${aws_apigatewayv2_stage.tech_challenge_route_default_stage.invoke_url}${var.lambda_handler}"]
+  callback_urls                        = ["https://example.com/"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_flows                  = ["code", "implicit"]
   allowed_oauth_scopes                 = ["email", "openid", "phone"]
@@ -76,7 +76,7 @@ resource "aws_cognito_user_pool_client" "tech_challenge_user_pool_client" {
 
 
 resource "aws_cognito_user_group" "tech_challenge_user_group" {
-  name         = "grp_admin"
+  name         = "grp_user"
   user_pool_id = aws_cognito_user_pool.tech_challenge_user_pool.id
-  description  = "${local.project_name} admin group"
+  description  = "${local.project_name} user group"
 }

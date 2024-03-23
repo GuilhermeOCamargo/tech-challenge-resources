@@ -42,6 +42,13 @@ resource "aws_ssm_parameter" "tech_challenge_ssm_api_issuer" {
   value = "https://cognito-idp.${var.region}.amazonaws.com/${aws_cognito_user_pool.tech_challenge_user_pool.id}"
 }
 
+resource "aws_ssm_parameter" "tech_challenge_ssm_api_jwk_uri" {
+  name  = "${var.ssm_prefix}/spring.security.oauth2.resourceserver.jwt.jwk-set-uri"
+  type  = "String"
+  tier  = "Standard"
+  value = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_OosdmKVyL/.well-known/jwks.json"
+}
+
 resource "aws_ssm_parameter" "tech_challenge_ssm_ses_user" {
   name  = "${var.ssm_prefix}/spring.mail.username"
   type  = "String"
@@ -67,6 +74,36 @@ resource "aws_ssm_parameter" "tech_challenge_ssm_ses_email_from" {
   type  = "String"
   tier  = "Standard"
   value = var.ses_email
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
+resource "aws_ssm_parameter" "tech_challenge_ssm_ses_email_to" {
+  name  = "${var.ssm_prefix}/smtp.email.to"
+  type  = "String"
+  tier  = "Standard"
+  value = var.ses_recipient_email
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
+resource "aws_ssm_parameter" "ssm_client_id" {
+  name  = "${var.ssm_prefix}/clientId"
+  type  = "String"
+  tier  = "Standard"
+  value = aws_cognito_user_pool_client.tech_challenge_user_pool_client.id
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
+resource "aws_ssm_parameter" "ssm_client_secret" {
+  name  = "${var.ssm_prefix}/client_secret"
+  type  = "String"
+  tier  = "Standard"
+  value = aws_cognito_user_pool_client.tech_challenge_user_pool_client.client_secret
   lifecycle {
     ignore_changes = [value]
   }

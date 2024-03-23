@@ -62,17 +62,17 @@ resource "aws_apigatewayv2_integration" "tech_challenge_api_integration" {
   connection_id      = aws_apigatewayv2_vpc_link.tech_challenge_vpc_link.id
 }
 
-resource "aws_apigatewayv2_integration" "tech_challenge_apigateway_integration_cognito_callback" {
-  api_id = aws_apigatewayv2_api.tech_challenge_api_gateway.id
+# resource "aws_apigatewayv2_integration" "tech_challenge_apigateway_integration_cognito_callback" {
+#   api_id = aws_apigatewayv2_api.tech_challenge_api_gateway.id
 
-  integration_uri    = aws_lambda_function.tech_challenge_lambda_callback_function.invoke_arn
-  integration_type   = "AWS_PROXY"
-  integration_method = "POST"
-  connection_type    = "INTERNET"
-}
+#   integration_uri    = aws_lambda_function.tech_challenge_lambda_callback_function.invoke_arn
+#   integration_type   = "AWS_PROXY"
+#   integration_method = "POST"
+#   connection_type    = "INTERNET"
+# }
 
-resource "aws_apigatewayv2_route" "tech_challenge_apigateway_route_cognito_callback" {
-  api_id    = aws_apigatewayv2_api.tech_challenge_api_gateway.id
-  route_key = "ANY /${var.lambda_handler}"
-  target    = "integrations/${aws_apigatewayv2_integration.tech_challenge_apigateway_integration_cognito_callback.id}"
-}
+# resource "aws_apigatewayv2_route" "tech_challenge_apigateway_route_cognito_callback" {
+#   api_id    = aws_apigatewayv2_api.tech_challenge_api_gateway.id
+#   route_key = "ANY /${var.lambda_handler}"
+#   target    = "integrations/${aws_apigatewayv2_integration.tech_challenge_apigateway_integration_cognito_callback.id}"
+# }
